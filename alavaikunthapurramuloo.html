@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Movies</title>
+    <style>
+        body {
+            margin: 0px;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /* display: none; */
+            background-color: grey;
+            box-shadow: 3px grey;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: darkgray;
+        }
+
+        .backImg {
+            /* margin: 0px;
+            padding: 0px;
+            position: relative; */
+
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+            width: 100vw;
+            height: 55vh;
+        }
+
+        .homebgimg {
+            /* width: 100vw;
+            height: 55vh;
+            object-fit: cover;
+            opacity: 1; */
+
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+
+        .text-overlay {
+            /* position: absolute;
+            top: 5%;
+            margin-left: 13rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; */
+
+            position: absolute;
+            top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        div.text-overlay a,
+        div.footer a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 35px;
+        }
+
+        ul.nav-content li,
+        ul.nav-footer li {
+            list-style-type: none;
+            text-decoration: none;
+            display: inline;
+        }
+
+        ul.nav-content li.navli a.navlia {
+            font-size: 20px;
+            /* margin-left: 30px; */
+            padding: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+            color: rgb(240, 240, 240);
+            transition: color 500ms;
+        }
+
+        ul.nav-footer li.navli a.navlia {
+            font-size: 20px;
+            padding: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+            color: rgb(204, 201, 201);
+            transition: color 500ms;
+        }
+
+        ul.nav-content li.navli a.navlia:hover,
+        ul.nav-footer li.navli a.navlia:hover {
+            color: white;
+        }
+
+        .nav-content {
+            /* display: inline-block;
+            position: relative;
+            left: 40%;
+            align-content: end; */
+            display: block;
+            float: right;
+            clear: both;
+        }
+
+        /* @media only screen and (max-width: 1020px) {
+            .nav-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+            }
+        } */
+
+        .quote {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 35px;
+            position: absolute;
+            top: 35%;
+            left: 20%;
+            color: white;
+        }
+
+        .profbg {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 60vh;
+            /* border: 2px solid green; */
+        }
+
+        .profimg {
+            position: absolute;
+            /* top: 48%; */
+            /* top: 0%; */
+            bottom: 12%;
+            width: 60vw;
+            height: 60vh;
+            padding: 10px 10px 0px 10px;
+            background-color: white;
+        }
+
+        .profimg img {
+            /* position: relative; */
+            width: 100%;
+            height: 100%;
+        }
+
+        .pushpa {
+            position: relative;
+            /* position: absolute;
+            top: 50%;
+            left: 25%; */
+            /* border: 2px solid red; */
+            /* padding: 20px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            /* height: 100vh; */
+        }
+
+        .pushpacontent {
+            /* position: relative;
+            top: 55vh;
+            bottom: 0%; */
+            width: 50vw;
+            /* border: 2px solid red;
+            background-color: lightblue; */
+        }
+
+        .pushpacontent h2 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-wrap: wrap;
+        }
+
+        .pushpacontent p {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: large;
+            text-wrap: wrap;
+        }
+
+        .grid {
+            /* border: 2px solid red; */
+            background-color: gray;
+            position: relative;
+            /* bottom: 0%; */
+            /* width: 100vw;
+            height: 100vh; */
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            /* margin-bottom: 60px; */
+            padding: 50px 0px;
+        }
+
+        .title {
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            border-left-style: groove;
+            border-right-style: groove;
+            margin: 0px 80px 30px 80px;
+            /* margin-bottom: 30px; */
+            text-align: center;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .box {
+            /* border: 2px solid green; */
+            background-color: lightgreen;
+            width: 300px;
+            height: 300px;
+            text-decoration: none;
+
+        }
+
+        a.box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box:nth-child(1),
+        .box:nth-child(2),
+        .box:nth-child(3),
+        .box:nth-child(4),
+        .box:nth-child(5),
+        .box:nth-child(6) {
+            width: 300px;
+            height: 300px;
+        }
+
+        a.box img {
+            transition: transform 700ms;
+        }
+
+        a.box img:hover {
+            transform: scale(1.03);
+        }
+
+        .box:nth-child(1) {
+            animation: late1 200ms;
+        }
+
+        .box:nth-child(2) {
+            animation: late1 400ms;
+        }
+
+        .box:nth-child(3) {
+            animation: late1 600ms;
+        }
+
+        .box:nth-child(4) {
+            animation: late1 800ms;
+        }
+
+        .box:nth-child(5) {
+            animation: late1 1000ms;
+        }
+
+        .box:nth-child(6) {
+            animation: late1 1200ms;
+        }
+
+        @keyframes late1 {
+            0% {
+                transform: scale(0.2);
+            }
+
+            25% {
+                transform: scale(0.4);
+            }
+
+            50% {
+                transform: scale(0.6);
+            }
+
+            75% {
+                transform: scale(0.8);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .text {
+            position: absolute;
+            top: 65%;
+            left: 5%;
+            color: white;
+            margin: 5px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+        }
+
+
+        .contact {
+            /* border: 2px solid red; */
+            background-color: lightskyblue;
+            width: 100vw;
+            height: 35vh;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: auto;
+        }
+
+        div.contact h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 60px;
+            color: white;
+        }
+
+        div.contact button {
+            padding: 10px 0px;
+            background-color: lightgreen;
+            border: 2px olid lightgreen;
+            border-radius: 10px;
+            margin: 0px 80px 60px 80px;
+            transition: background-color 600ms;
+            /* transition: color 600ms; */
+        }
+
+        div.contact button:hover {
+            background-color: rgb(125, 210, 125);
+            /* color: white; */
+        }
+
+        div.contact button a {
+            text-decoration: none;
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* div.contact button a:hover {
+        } */
+
+        .footer {
+            position: relative;
+            bottom: 0%;
+            width: 100vw;
+            background-color: rgb(44, 40, 40);
+            padding: 20px;
+            /* margin-top: 50px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-footer {
+            /* position: relative; */
+            /* left: 30%; */
+            /* align-content: end; */
+            display: block;
+            float: right;
+            clear: both;
+            /* margin-right: 60px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div class="nav">
+        <div class="backImg">
+            <img class="homebgimg" src="./alavaikunthabgresized.jpg" alt="">
+            <div class="text-overlay">
+                <a style="margin-right: 15rem;" href="#"><span>ALLU</span><span
+                        style="font-weight: bold;">ARJUN</span></a>
+                <ul class="nav-content">
+                    <li class="navli"><a class="navlia" href="./index.html">HOME</a></li>
+                    <li class="navli"><a class="navlia" href="./about.html">ABOUT</a></li>
+                    <li class="navli"><a class="navlia" href="./popular_movies.html"
+                            style="color: white;">POPULAR-MOVIES</a></li>
+                    <li class="navli"><a class="navlia" href="./blog.html">BLOG</a></li>
+                    <li class="navli"><a class="navlia" href="./contact.html"
+                            style="background-color:rgb(203, 206, 206); padding: 10px; border-radius: 4px;">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <p class="quote">
+                <span>"Push Yourself To The Edge Of Your Limits.</span><br>
+                <span> That's How They Expand."</span>
+            </p> -->
+        </div>
+    </div>
+    <div class="profbg">
+        <div class="profimg">
+            <img src="./alavaikuntha.jpg" alt="">
+        </div>
+    </div>
+    <div class="pushpa">
+        <div class="pushpacontent">
+            <h2 style="margin-top: 0px;">Ala Vaikunthapurramuloo</h2>
+            <p>
+                Ala Vaikunthapurramuloo is a 2020 Indian Telugu-language action drama film written and
+                directed by Trivikram Srinivas. The film stars Allu Arjun and Pooja Hegde in the lead roles, alongside
+                an ensemble cast of Tabu, Jayaram, Sushanth, Nivetha Pethuraj, Murali Sharma, Samuthirakani, Navdeep,
+                Sunil, Sachin Khedekar, Govind Padmasoorya, Harsha Vardhan, Rohini, Vennela Kishore, Ajay, and Rajendra
+                Prasad. It is produced by Allu Aravind and S. Radha Krishna under their banners Geetha Arts and
+                Haarika & Hassine Creations respectively
+            </p>
+            <p>
+                Production of the film began in April 2019, and wrapped up within December 2019. It was filmed across
+                Hyderabad, with songs being shot in overseas. The film's soundtrack is composed by S. Thaman, while
+                cinematography and editing were handled by P. S. Vinod and Naveen Nooli, respectively. After premiering
+                in the United States on 11 January 2020, the film was released theatrically on 12 January, coinciding
+                with Sankranti.
+            </p>
+            <p>
+                The film opened to well critical acclaim, with praise for the cast's performances, Thaman's music,
+                entertainment value, and Trivikram's writing and direction. The film was commercially successful and
+                grossed ₹262–280 crore worldwide. It became one of the highest-grossing Telugu films of all time and
+                second highest grossing Indian films of 2020. Thaman won the National Film Award for Best Music
+                Direction. The film also won ten South Indian International Movie Awards including Best Film –
+                Telugu. A Hindi-language remake titled Shehzada was released on 17 February 2023.
+            </p>
+            <h2>Story</h2>
+            <p>
+                1995: Valmiki and Ramachandra start their career as clerks in the company of Ananth "ARK" RadhaKrishna.
+                Ramachandra, who marries ARK's daughter Yasoda "Yasu", becomes wealthy while Valmiki remains as a middle
+                class person. On the day of the birth of both their children, Ramachandra's son appears to be stillborn.
+                When nurse Sulochana informs Valmiki about this, he offers to exchange his baby with the dead one.
+            </p>
+            <p>
+                After the switch, the child that appeared dead starts to cry; however, Valmiki wants his son to grow up
+                in a rich household. When Sulochana tries to switch the babies again, Valmiki tries to stop her and
+                accidentally pushes her. Sulochana falls from the hospital building and goes into a coma with Valmiki
+                getting a cramp that slowly turns into a limp. Valmiki's son is named Raj. Valmiki names Ramachandra's
+                son Bantu and treats him roughly due to his true parentage.
+            </p>
+            <p>
+                2020: After Valmiki refuses to pay for Bantu's MBA, Bantu goes to interview for a job at a travel
+                company headed by Amulya aka Ammu, a self-made businesswoman. After a brief scuffle and misunderstanding
+                with the company HR Shekhar, Bantu lands the role. Eventually, Bantu develops feelings for Ammu when he,
+                Ammu, Shekhar, and their colleague Ravindra Reddy go to Paris for a business trip, and shortly after the
+                trip, Ammu reciprocates his feelings.
+            </p>
+            <p>
+                Meanwhile, Raj returns from abroad, discontinuing his MBA. Ramachandra wants Raj to toughen up so he
+                sends him to reject Paidithalli, the son of Appala Naidu, a wealthy, powerful and influential man who
+                offers to buy 50% of their company's shares. Ramachandra watches the deal from the hotel where Ammu and
+                Bantu have a meeting with Sudharshanam, the investor behind Ammu's firm, who wants to buyback Ammu's
+                travel agency. Ramachandra is disappointed by Raj's hesitance and inability to say no to Paidithalli but
+                is proud of Bantu and Ammu for saying no to Sudharshanam. Following this, Raj is engaged with Ammu on
+                ARK's suggestion, even though Raj is already in love with his cousin Nandini "Nandu".
+            </p>
+            <p>
+                Appala Naidu attempts to kill Ramachandra for refusing to sell the shares minutes before Ammu and Bantu
+                arrive to call off the marriage. Bantu saves Ramachandra by taking him to the hospital despite several
+                attempts by Naidu's men to stop them. There he meets Sulochana, who comes out of her coma and reveals
+                Bantu's true parentage. She passes away right after that. The furious Bantu slaps Valmiki. Bantu then
+                manages to enter Ramachandra's house, named "Vaikuntapuram", by blackmailing Ramachandra’s doctor. ARK
+                takes an instant liking to him.
+            </p>
+            <p>
+                Bantu addresses the issues plaguing the house by patching up Ramachandra's broken relationship with Yasu
+                (which was fragile, as Ramachandra had an affair once with a woman named Revathi seven years ago),
+                settling the dispute with Paidathalli, and reforming the corrupt family members, Sitaram and Kashiram.
+            </p>
+            <p>
+                At a party thrown at their house, Yasu witnesses Bantu and Ammu kissing each other. Bantu is ousted out
+                of the house by Valmiki while Ammu's engagement with Raj is cancelled. Naidu uses the situation to his
+                advantage by kidnapping and threatening to kill Nandu unless Ramachandra gives the shares to
+                Paidithalli. When Valmiki begs Bantu to save Nandu, he refuses but goes anyway. He thrashes the goons,
+                slams Paidathalli, and stabs Naidu. Later, Raj saves Naidu, thus ending his enmity with Ramachandra.
+                Bantu and Valmiki arrive at Vaikuntapuram, where ARK slaps Valmiki and reveals that he overheard the
+                conversation between Sulochana and Bantu right before her death. Bantu unites with his biological
+                father, Ramachandra but asks him not to reveal the truth to Yasu, fearing she might be disheartened to
+                know that Raj is not her real child. Unaware of this, Yasu remarks that Bantu is equal to Raj as he
+                saved Nandu and the family, thereby giving Bantu 50% of its shares. Yasu then asks Valmiki to train Raj
+                for five years to be as competent as Bantu and become the CEO of the company.
+            </p>
+            <p>
+                After arriving at Valmiki's house, Raj, feeling comfortable with his new middle class life and Bantu's
+                old travel job, said that Valmiki, with a nurse's help, should have switched the babies 25 years ago so
+                he could've ended up at Valmiki's house and Bantu at Ramachandra's, much to the dismay of Valmiki. The
+                story ends with Valmiki watching hopelessly as Bantu leaves in a helicopter with Ammu.
+            </p>
+        </div>
+    </div>
+    <!-- Grid -->
+    <div class="grid">
+        <h1 class="title">Other Popular Movies</h1>
+        <a class="box" href="./pushpa.html">
+            <img class="box2" src="./pushpatheme.jpg" alt="">
+            <div class="text">
+                <!-- <div>Ala Vaikuntha-</div>
+                <div>purramuloo</div> -->
+            </div>
+        </a>
+        <a class="box" href="./sos.html">
+            <img class="box3" src="./SOS.jpg" alt="">
+            <div class="text">
+                <!-- <div>Movie Name</div> -->
+            </div>
+        </a>
+    </div>
+    <!-- Contact Me -->
+    <div class="contact">
+        <h1>Lets Work Togather</h1>
+        <button><a href="./contact.html">CONTACT ME</a></button>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <a href="#"><span>TILE</span><span style="font-weight: bold; margin-right: 40px;">DESIGN</span></a>
+        <ul class="nav-footer">
+            <li class="navli"><a class="navlia" href="./index.html">HOME</a></li>
+            <li class="navli"><a class="navlia" href="./about.html">ABOUT</a></li>
+            <li class="navli"><a class="navlia" href="./popular_movies.html" style="color: white;">POPULAR-MOVIES</a>
+            </li>
+            <li class="navli"><a class="navlia" href="./blog.html">BLOG</a></li>
+            <li style="padding-left: 20px;" class="navli">
+                <a style="background-color:rgb(166, 166, 166); padding: 10px; border-radius: 4px;" class="navlia"
+                    href="./contact.html">CONTACT</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

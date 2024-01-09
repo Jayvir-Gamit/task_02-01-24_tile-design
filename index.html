@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Data Template</title>
+    <style>
+        body {
+            margin: 0px;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /* display: none; */
+            background-color: grey;
+            box-shadow: 3px grey;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: darkgray;
+        }
+
+        .backImg {
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+            width: 100vw;
+            height: 53vh;
+        }
+
+        .homebgimg {
+            /* width: 100vw;
+            height: 53vh;
+            object-fit: cover;
+            opacity: 0.8; */
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+
+        /* .text-overlay {
+            position: absolute;
+            top: 5%;
+            margin-left: 13rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;   
+        } */
+
+        .text-overlay {
+            position: absolute;
+            top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        div.text-overlay a,
+        div.footer a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 35px;
+        }
+
+        ul.nav-content li,
+        ul.nav-footer li {
+            list-style-type: none;
+            text-decoration: none;
+            display: inline;
+        }
+
+        ul.nav-content li.navli a.navlia {
+            font-size: 20px;
+            /* margin-left: 30px; */
+            padding: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+            color: rgb(228, 228, 228);
+            transition: color 500ms;
+        }
+
+        ul.nav-footer li.navli a.navlia {
+            font-size: 20px;
+            /* margin-left: 30px; */
+            padding: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+            color: rgb(213, 212, 212);
+            transition: color 500ms;
+        }
+
+        ul.nav-content li.navli a.navlia:hover,
+        ul.nav-footer li.navli a.navlia:hover {
+            color: white;
+        }
+
+        .nav-content {
+            /* display: inline-block;
+            position: relative;
+            left: 40%;
+            align-content: end; */
+            display: block;
+            float: right;
+            clear: both;
+        }
+
+        /* @media only screen and (max-width: 1024px) {
+            .nav-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+            }
+        } */
+
+
+        .quote {
+            font-family: cursive;
+            font-size: 30px;
+            position: absolute;
+            top: 40%;
+            /* left: 30%; */
+            height: 100vh;
+            width: 100vw;
+            margin: auto;
+            color: white;
+            margin: 0px;
+        }
+
+        .quoteown {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            /* position: absolute;
+            top: 42%; */
+            /* left: 65%; */
+            /* height: 100vh;
+            width: 100vw;
+            margin: auto; */
+            color: white;
+            float: right;
+        }
+
+        .grid {
+            background-color: white;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: center;
+            position: absolute;
+            top: 44%;
+            left: 20%;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            /* border: 2px solid red; */
+            background-color: navajowhite;
+            text-decoration: none;
+        }
+
+        a.box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        div.box a.sbox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            width: 610px;
+            height: 300px;
+            position: relative;
+            transition: transform 200ms;
+            animation: late1 400ms;
+        }
+
+        .box:nth-child(2) {
+            animation: late1 600ms;
+        }
+
+        .box:nth-child(3) {
+            animation: late1 800ms;
+        }
+
+        .box:nth-child(4) {
+            animation: late1 1000ms;
+        }
+
+        .box:nth-child(5) {
+            animation: late1 1200ms;
+        }
+
+        @keyframes late1 {
+            0% {
+                transform: scale(0.2);
+            }
+
+            25% {
+                transform: scale(0.4);
+            }
+
+            50% {
+                transform: scale(0.6);
+            }
+
+            75% {
+                transform: scale(0.8);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .box:nth-child(1):hover {
+            transform: scale(1.01, 1.03);
+        }
+
+        .box:nth-child(2):hover,
+        .box:nth-child(3):hover,
+        .box:nth-child(4):hover {
+            transform: scale(1.03);
+        }
+
+        .text {
+            position: absolute;
+            top: 65%;
+            left: 5%;
+            color: white;
+            margin: 5px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+        }
+
+        .box:nth-child(2),
+        .box:nth-child(3),
+        .box:nth-child(4) {
+            /* grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2; */
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transition: transform 500ms;
+        }
+
+        .box5 {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .sbox {
+            width: 150px;
+            height: 150px;
+            /* border: 2px solid red; */
+        }
+
+        .sbox:hover {
+            opacity: 0.8;
+        }
+
+        .footer {
+            position: absolute;
+            top: 145%;
+            /* bottom: 0%; */
+            /* width: 100vw;
+            background-color: rgb(44, 40, 40);
+            padding: 20px; */
+
+            width: 100vw;
+            background-color: rgb(44, 40, 40);
+            padding: 20px;
+            /* margin-top: 50px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-footer {
+            /* display: inline-block;
+            position: relative;
+            left: 30%;
+            align-content: end; */
+
+            display: block;
+            float: right;
+            clear: both;
+        }
+
+        .nav {
+            position: absolute;
+        }
+
+        /* contact model */
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- navbar -->
+        <div class="nav">
+            <div class="backImg">
+                <img class="homebgimg" src="./allu_arjun_nav_resize.jpg" alt="">
+                <div class="text-overlay">
+                    <a style="margin-right: 15rem;" href="#"><span>ALLU</span><span
+                            style="font-weight: bold;">ARJUN</span></a>
+                    <ul class="nav-content">
+                        <li class="navli"><a class="navlia" href="" style="color: white;">HOME</a></li>
+                        <li class="navli"><a class="navlia" href="./about.html">ABOUT</a></li>
+                        <li class="navli"><a class="navlia" href="./popular_movies.html">POPULAR-MOVIES</a></li>
+                        <li class="navli"><a class="navlia" href="./blog.html">BLOG</a></li>
+                        <li class="navli">
+                            <a class="navlia" href="./contact.html" style="background-color:rgb(203, 206, 206); padding: 10px; border-radius: 4px;">
+                                CONTACT
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div style="position: absolute; top: 40%; left: 35%;">
+                    <p class="quote">I'm Only Competing With My Self.</p>
+                    <p class="quoteown">~ Allu Arjun</p>
+                </div> -->
+                <p class="quote">
+                    <span style="display: flex; justify-content: center; align-items: center;">
+                        <span>"I'm Only Competing With My Self."</span>
+                    </span>
+                    <span style="display: flex; justify-content:center; align-items: center;">
+                        <span>~ Allu Arjun</span>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <!-- grid -->
+        <div class="grid">
+            <a href="./about.html" class="box">
+                <img class="box1" src="./allubg1.jpg" alt="">
+                <div class="text">
+                    <div class="">ABOUT</div>
+                    <div class="">MYSELF</div>
+                </div>
+            </a>
+            <a href="./popular_movies.html" class="box">
+                <img class="box2" src="./pushpatheme.jpg" alt="">
+                <div class="text">
+                    <div class="">POPULAR</div>
+                    <div class="">MOVIES</div>
+                </div>
+            </a>
+            <a href="./pushpa2.html" class="box">
+                <img class="box3" src="./pushpa2.webp" alt="">
+                <div class="text">
+                    <div class="">UPCOMING</div>
+                    <div class="">MOVIES</div>
+                </div>
+            </a>
+            <a href="./blog.html" class="box">
+                <img class="box4" src="./blog.jpg" alt="">
+                <div class="text">
+                    <div class="">BLOG</div>
+                </div>
+            </a>
+            <div href="" class="box box5">
+                <a href="https://www.instagram.com/alluarjunonline/?hl=en" class="sbox">
+                    <img src="./insta.jpg" alt="">
+                </a>
+                <a href="https://twitter.com/alluarjun?lang=en" class="sbox">
+                    <img src="./twitt.jpg" alt="">
+                </a>
+                <a href="https://www.facebook.com/AlluArjun/" class="sbox">
+                    <img src="./fb1.jpg" alt="">
+                </a>
+                <a href="https://open.spotify.com/playlist/4rPkf6yzNeV24Mo1RDNOYJ" class="sbox">
+                    <img src="./spotify.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <a href="#"><span>TILE</span><span style="font-weight: bold; margin-right: 40px;">DESIGN</span></a>
+            <!-- <a style="margin-left: 60px;" href="#"><span>BIO</span><span style="font-weight: bold;">DESIGN</span></a> -->
+            <ul class="nav-footer">
+                <li class="navli"><a class="navlia" href="" style="color: white;">HOME</a></li>
+                <li class="navli"><a class="navlia" href="./about.html">ABOUT</a></li>
+                <li class="navli"><a class="navlia" href="./popular_movies.html">POPULAR-MOVIES</a></li>
+                <li class="navli"><a class="navlia" href="./blog.html">BLOG</a></li>
+                <li style="padding-left: 20px;" class="navli">
+                    <a class="navlia" href="./contact.html"
+                        style="background-color:rgb(181, 178, 178); padding: 10px; border-radius: 4px;">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- contact model -->
+    
+</body>
+
+
+
+</html>
